@@ -16,6 +16,6 @@ RUN curl -s https://getcomposer.org/installer | php && \
 		chmod a+x composer.phar && \
 		mv composer.phar /usr/local/bin/composer && \
 		composer config -g repo.packagist composer https://packagist.phpcomposer.com
-ENV MSF_ENV=dev
-ENV PROJECT_DIR=/app/project
-CMD ["php", "${PROJECT_DIR}/server.php"]
+COPY run.sh /run.sh
+RUN chmod u+x /*.sh
+CMD ["/run.sh"]
